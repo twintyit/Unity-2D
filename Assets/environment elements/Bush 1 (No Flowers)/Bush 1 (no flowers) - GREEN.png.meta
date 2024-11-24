@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Bush 1 (no flowers) - GREEN_0: -2563890418612357489
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

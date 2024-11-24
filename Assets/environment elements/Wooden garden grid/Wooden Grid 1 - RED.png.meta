@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Wooden Grid 1 - RED_0: -6557569812058866337
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

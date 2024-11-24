@@ -1,51 +1,44 @@
+using System.Linq;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class BirdScript : MonoBehaviour
 {
+    public static int score;
     private Rigidbody2D rb2d;
+
     void Start()
     {
+        score = 0;
         rb2d = GetComponent<Rigidbody2D>();
     }
 
- 
     void Update()
     {
+        if (Time.timeScale == 0.0f) return;
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             rb2d.AddForce(Vector2.up * 300);
         }
 
-        this.transform.eulerAngles = new Vector3 (0f, 0f, 2.5f * rb2d.linearVelocityY);
+        this.transform.eulerAngles = new Vector3(0f, 0f, 2.5f * rb2d.linearVelocity.y);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Pipe"))
+        if (collision.gameObject.CompareTag("Pipe"))
         {
-            Debug.Log("Game Over");
+            Object.FindFirstObjectByType<ModalScript>().TriggerGameOver();
         }
     }
-
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Pipe"))
         {
-            Debug.Log("Pipe +1");
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Mobe"))
-        {
-            Transform parentTransform = collision.gameObject.transform.parent;
-            GameObject.Destroy(collision.gameObject);
-            if (parentTransform != null)
-            {
-                GameObject.Destroy(parentTransform.gameObject);
-            }
+            score++;
+            Debug.Log("Score: " + score);
         }
     }
 }
